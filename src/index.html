@@ -39,6 +39,10 @@
             <span class="custom-checkbox"></span>
             record todo list video
           </label>
+          <p> soem sffssafdas</p>
+          <p> 10-23-33</p>
+          <p id='high'>High </p>
+          <p><i class="fa fa-trash" aria-hidden="true"></i></p>
         </div>
       </div>
   
@@ -66,8 +70,17 @@
       <input type="text" class="new item" id="list-tilte" name="title" placeholder="title">
       <input type="text" class="new item" id="list-description" name="description" placeholder="description">
       <input type="date" class="new item" id="list-date" name="date" placeholder="due date">
-      <input type="text" class="new item" id="list-notes" name="notes" placeholder="notes">
-      <input type="radio" class="new item" id="list-check" name="check">
+
+      <label>priority
+    
+        <input type="radio" id="high" name="priority" value="high">
+        <label for="high">High</label>
+        <input type="radio" id="medium" name="priority" value="medium">
+        <label for="medium">Medium</label>
+        <input type="radio" id="low" name="priority" value="low">
+        <label for="low">Low</label>
+    </label>
+
       <button class="btn create" aria-label="create new list">+</button>
     </form>
   </div>

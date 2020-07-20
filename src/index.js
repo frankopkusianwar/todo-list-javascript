@@ -16,13 +16,29 @@ const task = (() => {
     popUpForm.style.display = 'block'
   })
 
+
+
+// < div class="tasks" >
+//   <div class="task">
+//     <input type="checkbox" id="task-1" />
+//     <label for="task-1">
+//       <span class="custom-checkbox"></span>
+//       record todo list video
+//       </label>
+//     <p> soem sffssafdas</p>
+//     <p> 10-23-33</p>
+//     <p id='high'>High </p>
+//     <p><i class="fa fa-trash" aria-hidden="true"></i></p>
+//   </div>
+//   </div >
+
+
   const addTask = (e) => {
     e.preventDefault()
-    e.target.title.value
   }
 
   form.addEventListener('submit', addTask)
-  
+
   return form
 })()
 
