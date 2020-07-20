@@ -38,8 +38,10 @@ const task = (() => {
     const priorityTask = document.createElement('p');
     priorityTask.textContent = task.priority
     const trashTask = document.createElement('p');
-  
-  
+    const newTeskAlert = document.querySelector('.task-created-alert')
+    newTeskAlert.textContent = `${task.title} was successfully created`
+    newTeskAlert.style.display = 'block'
+      
     labelTask.appendChild(spanTask)
     divTask.appendChild(checkboxTask)
     divTask.appendChild(labelTask)
@@ -48,6 +50,11 @@ const task = (() => {
     divTask.appendChild(priorityTask)
     divTask.appendChild(trashTask)
     todoBody.appendChild(divTask)
+    
+    setTimeout(() => {
+      newTeskAlert.textContent = ''
+      newTeskAlert.style.display = 'none'
+    }, 3000);
   }
   
   const addTask = (e) => {
@@ -61,6 +68,9 @@ const task = (() => {
       addNewTask(newTask)
     }else {
       popupAlert.style.display = 'block'
+      setTimeout(() => {
+        popupAlert.style.display = 'none' 
+      }, 3000);
     }
   }
 
