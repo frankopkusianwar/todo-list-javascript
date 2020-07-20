@@ -39,6 +39,7 @@ const task = (() => {
     const priorityTask = document.createElement('p');
     priorityTask.textContent = task.priority
     const trashTask = document.createElement('p');
+    trashTask.setAttribute('class', 'delete-tast')
     trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 
     const newTeskAlert = document.querySelector('.task-created-alert')

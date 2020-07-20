@@ -282,3 +282,14 @@ form {
 .list-alert {
   display: none;
 }
+
+.fa-trash {
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.delete-tast {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
