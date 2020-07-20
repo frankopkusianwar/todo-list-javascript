@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-server": "webpack-dev-server --watch"
+    "dev-server": "webpack-dev-server --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "html-loader": "^1.1.0",
