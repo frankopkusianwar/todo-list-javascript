@@ -268,3 +268,13 @@ form {
   background-color: rgb(233, 52, 52);
   color: aliceblue;
 }
+
+.pop-up-alert{
+  margin: auto;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  padding: 100px;
+  display: none;
+}

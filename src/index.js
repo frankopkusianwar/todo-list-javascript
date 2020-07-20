@@ -10,6 +10,7 @@ const task = (() => {
 
   const createButton = document.querySelector('.new-task-creator')
   const form = document.querySelector('#task-form')
+  const popupAlert = document.querySelector('.pop-up-alert')
   
   createButton.addEventListener('click', (e) => {
     const popUpForm = document.querySelector('.pop-up-form')
@@ -49,15 +50,18 @@ const task = (() => {
     todoBody.appendChild(divTask)
   }
   
-
   const addTask = (e) => {
     e.preventDefault()
     const title =e.target.title.value;
     const description =e.target.description.value;
     const date =e.target.date.value;
     const priority =e.target.priority.value;
-    const newTask = new Task(title, description, date, priority)
-    addNewTask(newTask)
+    if (!(title === "" || description === "" || date === "" || priority === "" )) {
+      const newTask = new Task(title, description, date, priority)
+      addNewTask(newTask)
+    }else {
+      popupAlert.style.display = 'block'
+    }
   }
 
   form.addEventListener('submit', addTask)
