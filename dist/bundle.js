@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar task = function () {\n  var Task = function Task(title, description, date, notes, check) {\n    _classCallCheck(this, Task);\n\n    this.title = title;\n    this.description = description;\n    this.date = date;\n    this.notes = notes;\n    this.check = check;\n  };\n\n  var createButton = document.querySelector('.new-task-creator');\n  var form = document.querySelector('#task-form');\n  createButton.addEventListener('click', function (e) {\n    var popUpForm = document.querySelector('.pop-up-form');\n    popUpForm.style.display = 'block';\n  });\n\n  var addTask = function addTask(e) {\n    e.preventDefault();\n    e.target.title.value;\n  };\n\n  form.addEventListener('submit', addTask);\n  return form;\n}();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
