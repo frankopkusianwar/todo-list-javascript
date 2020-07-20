@@ -4,10 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <p>yes</p>
-  <p>yes</p>
-  <p>yes</p>
+  <div class="all-tasks">
+    <h2 class="task-list-title">My lists</h2>
+    <ul class="task-list">
+      <li class="list-name">Youtube</li>
+    </ul>
+    
+    <form id=form>
+      <input type="text" class="new list" id="lists" name="lists" placeholder="new list name" value="lists">
+      <button class="btn create" aria-label="create new list">+</button>
+    </form>
+  </div>
+
+  <script src="../dist/bundle.js"></script>
 </body>
 </html>
