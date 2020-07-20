@@ -48,39 +48,42 @@
         <button class="btn delete">Delete list</button>
       </div>
     </div>
-    <div class="pop-up-alert">
-      <p>All fields are required</p>
-    </div>
   </div>
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <div class="tasks pop-up-form">
     <form id=task-form>
       <input type="text" class="new item" id="list-tilte" name="title" placeholder="title">
       <input type="text" class="new item" id="list-description" name="description" placeholder="description">
       <input type="date" class="new item" id="list-date" name="date" placeholder="due date">
-
+      
       <label>priority
-    
+        
         <input type="radio" id="high" name="priority" value="high">
         <label for="high">High</label>
         <input type="radio" id="medium" name="priority" value="medium">
         <label for="medium">Medium</label>
         <input type="radio" id="low" name="priority" value="low">
         <label for="low">Low</label>
-    </label>
-
+      </label>
+      
       <button class="btn create" aria-label="create new list">+</button>
     </form>
   </div>
-
-  <script src="../dist/bundle.js"></script>
+  <div class="pop-up-alert">
+    <p>All fields are required</p>
+  </div>
+  <div class="list-alert">
+    <p>Please fill the list name</p>
+  </div>
+  
+  <script src="index.js"></script>
 </body>
 </html>

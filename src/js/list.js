@@ -1,26 +1,22 @@
 const lists = (() => {
-  class List {
-    constructor(list) {
-      this.list = list
-    }
-  }
-
   const lists = document.querySelector('.task-list')
   const form = document.querySelector('#form')
-  const popupAlert = document.querySelector('.pop-up-alert')
-
+  const popupAlert = document.querySelector('.list-alert')
 
   const addListsItems = (e) => {
     e.preventDefault()
-    const listItems = document.createElement('li')
-    listItems.setAttribute('class', 'list-name')
-    const listTitle = e.target.lists.value
-    listItems.textContent = listTitle;
-    if (!(listTitle === "")) {
+    if (!(e.target.lists.value === "")) {
+      const listItems = document.createElement('li')
+      listItems.setAttribute('class', 'list-name')
+      listItems.textContent = e.target.lists.value;
       lists.appendChild(listItems);
-    }else {
+    } else {
       popupAlert.style.display = 'block'
+      setTimeout(() => {
+        popupAlert.style.display = 'none'
+      }, 3000);
     }
+    e.target.lists.value = ''
   }
 
   form.addEventListener('submit', addListsItems) 

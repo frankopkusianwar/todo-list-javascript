@@ -1,6 +1,3 @@
-import lists from '../src/js/list'
-console.log('testing')
-lists()
 const task = (() => {
   class Task {
     constructor(title, description, date, priority) {
@@ -71,6 +68,8 @@ const task = (() => {
 
   return form
 })()
+
+
 
 
 

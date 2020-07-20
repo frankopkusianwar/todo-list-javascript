@@ -278,3 +278,7 @@ form {
   padding: 100px;
   display: none;
 }
+
+.list-alert {
+  display: none;
+}
