@@ -65,19 +65,28 @@ const task = (() => {
       newTeskAlert.style.display = 'none'
     }, 3000);
   }
-  console.log(lists.switchList)
-  
+
+  const updateLocalStorageTask = (newTask) => {
+    const storage = lists.updateLocalStorage()
+    const currentKey = lists.switchListKey()
+    storage[currentKey].push(newTask)
+    localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
+  } 
+
   const checkingValidation = (title, description, date, priority, e) => {
-    if (!(title === "" || description === "" || date === "" || priority === "")) {
-      const newTask = new Task(title, description, date, priority)
-      localStorage.setItem(switchList(), JSON.stringify(localStorageTask.listName))
-      addNewTask(newTask)
-      resetForm(e)
-    } else {
-      popupAlert.style.display = 'block'
-      setTimeout(() => {
-        popupAlert.style.display = 'none'
-      }, 3000);
+    if (lists.switchListKey() !== undefined){
+      if (!(title === "" || description === "" || date === "" || priority === "")) {
+        const newTask = new Task(title, description, date, priority)
+        updateLocalStorageTask(newTask)
+
+        addNewTask(newTask)
+        resetForm(e)
+      } else {
+        popupAlert.style.display = 'block'
+        setTimeout(() => {
+          popupAlert.style.display = 'none'
+        }, 3000);
+      }
     }
   }
   

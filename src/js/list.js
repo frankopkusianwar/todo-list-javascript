@@ -3,17 +3,19 @@ const lists = (() => {
   const form = document.querySelector('#form')
   const popupAlert = document.querySelector('.list-alert')
   let localStorageTask = {}
+  let key;
   
-  const switchList = () => {
+  const switchListKey = () => {
     const allListItem = document.querySelectorAll('.list-name')
-    let key;
     allListItem.forEach(list => list.addEventListener('click', (e) => {
       key = e.target.textContent;
-      // localStorage.key(key)
-      // localStorageTask[key] = []
     }))
+    return key;
+  }
+
+  const updateLocalStorage = () => {
     return localStorageTask
-  } 
+  }
   
   const addListsItems = (e) => {
     e.preventDefault()
@@ -24,8 +26,8 @@ const lists = (() => {
       localStorageTask[e.target.lists.value] = []
       localStorage.setItem(e.target.lists.value, '')
       lists.appendChild(listItems);
-      switchList()
-      console.log(localStorageTask)
+      switchListKey()
+      updateLocalStorage()
     } else {
       popupAlert.style.display = 'block'
       setTimeout(() => {
@@ -38,8 +40,9 @@ const lists = (() => {
   form.addEventListener('submit', addListsItems) 
 
   return {
-    form,
-    switchList
+    switchListKey,
+    updateLocalStorage,
+    localStorageTask
   }
 })()
 
