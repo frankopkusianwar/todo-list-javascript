@@ -14,7 +14,3 @@ list
   // const todo = document.querySelector('.todo-body')
   // todo.style.display = 'none'
 
-
-
-
-

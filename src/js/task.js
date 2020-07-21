@@ -1,3 +1,5 @@
+import { differenceInCalendarDays, formatRelative, formatDistance, subDays } from 'date-fns'
+  
 const task = (() => {
   class Task {
     constructor(title, description, date, priority) {
@@ -17,6 +19,7 @@ const task = (() => {
     const popUpForm = document.querySelector('.pop-up-form')
     popUpForm.style.display = 'block'
   })
+  console.log(Date.now('DD-MM-YYYY'))
 
   const addNewTask = (task) => {
     const todoBody = document.querySelector('.todo-body')
@@ -35,7 +38,9 @@ const task = (() => {
     const descriptionTask = document.createElement('p');
     descriptionTask.textContent = task.description
     const dateTask = document.createElement('p');
-    dateTask.textContent = task.date
+    // dateTask.textContent = formatDistance(subDays(new Date(), differenceInCalendarDays(task.date, )), new Date())
+
+
     const priorityTask = document.createElement('p');
     priorityTask.textContent = task.priority
     const trashTask = document.createElement('p');
