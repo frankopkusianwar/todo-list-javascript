@@ -38,8 +38,7 @@ const task = (() => {
     const descriptionTask = document.createElement('p');
     descriptionTask.textContent = task.description
     const dateTask = document.createElement('p');
-    // const dt = new Date();
-    // const currentDate = task.date
+    dateTask.textContent = task.date
     
     const priorityTask = document.createElement('p');
     priorityTask.textContent = task.priority
@@ -68,13 +67,13 @@ const task = (() => {
 
   const updateLocalStorageTask = (newTask) => {
     const storage = lists.updateLocalStorage()
-    const currentKey = lists.switchListKey()
-    storage[currentKey].push(newTask)
+    const currentKey = lists.switchListKey()['key']
+    storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
   } 
 
   const checkingValidation = (title, description, date, priority, e) => {
-    if (lists.switchListKey() !== undefined){
+    // if (lists.switchListKey() !== und){
       if (!(title === "" || description === "" || date === "" || priority === "")) {
         const newTask = new Task(title, description, date, priority)
         updateLocalStorageTask(newTask)
@@ -87,7 +86,7 @@ const task = (() => {
           popupAlert.style.display = 'none'
         }, 3000);
       }
-    }
+    // }
   }
   
   const resetForm = (e) => {

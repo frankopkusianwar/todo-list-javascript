@@ -3,47 +3,59 @@ const lists = (() => {
   const form = document.querySelector('#form')
   const popupAlert = document.querySelector('.list-alert')
   let localStorageTask = {}
-  let key;
+  let currentKey = {'key': []}
   
   const switchListKey = () => {
     const allListItem = document.querySelectorAll('.list-name')
     allListItem.forEach(list => list.addEventListener('click', (e) => {
-      key = e.target.textContent;
+      const key = e.target.textContent;
+      currentKey['key'] = key
     }))
-    return key;
+    return currentKey
   }
 
-  const updateLocalStorage = () => {
-    return localStorageTask
-  }
-
-  
   const storedList = Object.keys(localStorage).reduce(function (obj, str) {
-    obj[str] = localStorage.getItem(str);
+    if (localStorage.getItem(str) === '') {
+      obj[str] = [];
+    } else {
+      obj[str] = [localStorage.getItem(str)];
+    }
     return obj
   }, {});
-  console.log(storedList)
+
+  const clearList = () => {
+    const listItems = document.querySelectorAll('.list-name')
+    listItems.forEach(item => item.remove())
+  }
   
-  const render = (() => {
+  const render = () => {
+    clearList()
     Object.keys(storedList).forEach(key => {
       const listItems = document.createElement('li')
       listItems.setAttribute('class', 'list-name')
       listItems.textContent = key
       lists.appendChild(listItems);
     })
-  })()
+    switchListKey()
+  }
+  
+  const updateLocalStorage = () => {
+    return storedList
+  }
+
+  render()
   
   const addListsItems = (e) => {
     e.preventDefault()
     const listItem = e.target.lists.value
     if (!(listItem === "")) {
+      render()
       const listItems = document.createElement('li')
       listItems.setAttribute('class', 'list-name')
       listItems.textContent = listItem
       lists.appendChild(listItems);
       localStorageTask[listItem] = []
       localStorage.setItem(listItem, '')
-      switchListKey()
       updateLocalStorage()
     } else {
       popupAlert.style.display = 'block'
