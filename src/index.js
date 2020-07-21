@@ -4,11 +4,11 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 import task from './js/task';
 import list from './js/list';
-import remove from './js/remove';
+// import remove from './js/remove';
 
 task
 list
-remove
+// remove
 
 
   // const todo = document.querySelector('.todo-body')

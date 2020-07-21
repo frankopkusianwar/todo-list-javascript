@@ -81,6 +81,15 @@ const task = (() => {
     radioButton.forEach(button => button.checked = false)
   } 
 
+  const deleteTask = () => {
+    const removeTask = document.querySelectorAll('.delete-tast')
+
+    removeTask.forEach(button => button.addEventListener('click', (e) => {
+      const task = e.target.parentElement.parentElement.parentElement
+      task.classList.toggle('fall')
+    }))
+  }
+
   const addTask = (e) => {
     e.preventDefault()
     const title = e.target.title.value;
@@ -88,11 +97,10 @@ const task = (() => {
     const date = e.target.date.value;
     const priority = e.target.priority.value;
     checkingValidation(title, description, date, priority, e.target)
+    deleteTask()
   }
 
   form.addEventListener('submit', addTask)
-
-  return form
 })()
 
 export default task
