@@ -65,13 +65,11 @@ const task = (() => {
       newTeskAlert.style.display = 'none'
     }, 3000);
   }
+  console.log(lists.switchList)
   
   const checkingValidation = (title, description, date, priority, e) => {
     if (!(title === "" || description === "" || date === "" || priority === "")) {
       const newTask = new Task(title, description, date, priority)
-      const listName = switchList()
-      localStorageTask.listName.push(newTask)
-      console.log(listName)
       localStorage.setItem(switchList(), JSON.stringify(localStorageTask.listName))
       addNewTask(newTask)
       resetForm(e)
