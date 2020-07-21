@@ -16,16 +16,33 @@ const lists = (() => {
   const updateLocalStorage = () => {
     return localStorageTask
   }
+
+  
+  const storedList = Object.keys(localStorage).reduce(function (obj, str) {
+    obj[str] = localStorage.getItem(str);
+    return obj
+  }, {});
+  console.log(storedList)
+  
+  const render = (() => {
+    Object.keys(storedList).forEach(key => {
+      const listItems = document.createElement('li')
+      listItems.setAttribute('class', 'list-name')
+      listItems.textContent = key
+      lists.appendChild(listItems);
+    })
+  })()
   
   const addListsItems = (e) => {
     e.preventDefault()
-    if (!(e.target.lists.value === "")) {
+    const listItem = e.target.lists.value
+    if (!(listItem === "")) {
       const listItems = document.createElement('li')
       listItems.setAttribute('class', 'list-name')
-      listItems.textContent = e.target.lists.value;
-      localStorageTask[e.target.lists.value] = []
-      localStorage.setItem(e.target.lists.value, '')
+      listItems.textContent = listItem
       lists.appendChild(listItems);
+      localStorageTask[listItem] = []
+      localStorage.setItem(listItem, '')
       switchListKey()
       updateLocalStorage()
     } else {
