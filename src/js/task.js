@@ -21,7 +21,7 @@ const task = (() => {
     popUpForm.style.display = 'block'
   })
   
-  const addNewTask = (task) => {
+  const renderTasks = (task) => {
     const todoBody = document.querySelector('.todo-body')
     const divTasks = document.createElement('div');
     divTasks.setAttribute('class', 'tasks');
@@ -70,6 +70,7 @@ const task = (() => {
     const currentKey = lists.switchListKey()['key']
     storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
+    renderTasks(newTask)
   } 
 
   const checkingValidation = (title, description, date, priority, e) => {
@@ -77,8 +78,6 @@ const task = (() => {
       if (!(title === "" || description === "" || date === "" || priority === "")) {
         const newTask = new Task(title, description, date, priority)
         updateLocalStorageTask(newTask)
-
-        addNewTask(newTask)
         resetForm(e)
       } else {
         popupAlert.style.display = 'block'
