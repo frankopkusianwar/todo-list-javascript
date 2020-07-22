@@ -1,4 +1,3 @@
-import { format, differenceInMinutes, differenceInDays, formatRelative, formatDistance, subDays } from 'date-fns'
 import lists from './list'
 
 const task = (() => {
@@ -79,18 +78,19 @@ const task = (() => {
     }
   }
   
-  
-
-
-
-  const renderListTasks = (() => {
+  const renderListTasks = () => {
     const lists = document.querySelectorAll('.list-name')
     lists.forEach(list => list.addEventListener('click', (e) => {
       let currentKey = e.target.textContent
       const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))
       renderTasks(getLocalStorageTasks)
     }))
-  })()
+  }
+
+  const lists = document.querySelectorAll('.list-name')
+  lists.forEach(list => list.addEventListener('click', () => {
+    renderListTasks()
+  }))
 
   const updateLocalStorageTask = (newTask) => {
     const storage = lists.updateLocalStorage()

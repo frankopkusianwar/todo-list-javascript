@@ -75,7 +75,6 @@ const lists = (() => {
       }, 3000);
     }
     e.target.lists.value = ''
-     console.log(storedList())
   }
   
   form.addEventListener('submit', addListsItems) 
