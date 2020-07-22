@@ -11,13 +11,11 @@ const lists = (() => {
     allListItem.forEach(list => list.addEventListener('click', (e) => {
       const key = e.target.textContent;
       currentKey['key'] = key
-      console.log(currentKey)
     }))
     return currentKey
   }
   
   allListItem.forEach(list => list.addEventListener('click', () => {
-    console.log(currentKey)
     switchListKey()
   }))
 
@@ -25,7 +23,7 @@ const lists = (() => {
     if (localStorage.getItem(str) === '') {
       obj[str] = '';
     } else {
-      obj[str] = localStorage.getItem(str);
+      obj[str] = JSON.parse([localStorage.getItem(str)]) || [];
     }
     return obj
   }, {});

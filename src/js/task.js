@@ -24,8 +24,7 @@ const task = (() => {
   const renderTasks = (tasks) => {
     if(tasks !== '') {
       Object.entries(tasks).forEach(([_,value]) => {
-        console.log(value['title'])
-        if (value['title'] !== undefined) {
+        if (value !== undefined) {
           const todoBody = document.querySelector('.todo-body')
           const divTasks = document.createElement('div');
           divTasks.setAttribute('class', 'tasks');
@@ -51,7 +50,7 @@ const task = (() => {
           trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
           
           const newTeskAlert = document.querySelector('.task-created-alert')
-          newTeskAlert.textContent = `${task.title} was successfully created`
+          newTeskAlert.textContent = `${value['title']} was successfully created`
           newTeskAlert.style.display = 'block'
           
           labelTask.appendChild(spanTask)
@@ -78,8 +77,7 @@ const task = (() => {
     storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
     const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))
-    console.log(getLocalStorageTasks)
-    renderTasks(currentKey, getLocalStorageTasks)
+    renderTasks(getLocalStorageTasks)
   } 
 
   const checkingValidation = (title, description, date, priority, e) => {
