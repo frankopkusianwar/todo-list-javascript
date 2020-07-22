@@ -73,7 +73,12 @@ const task = (() => {
 
   const updateLocalStorageTask = (newTask) => {
     const storage = lists.updateLocalStorage()
+    if (storage === '' ) {
+      storage = []
+    }
+    console.log(storage)
     const currentKey = lists.switchListKey()['key']
+    console.log(currentKey)
     storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
     const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))

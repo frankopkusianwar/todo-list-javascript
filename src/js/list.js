@@ -19,15 +19,18 @@ const lists = (() => {
     switchListKey()
   }))
 
-  const storedList = Object.keys(localStorage).reduce(function (obj, str) {
-    if (localStorage.getItem(str) === '') {
-      obj[str] = '';
-    } else {
-      obj[str] = JSON.parse([localStorage.getItem(str)]) || [];
-    }
-    return obj
-  }, {});
-
+  const storedList = () => {
+    const object = Object.keys(localStorage).reduce(function (obj, str) {
+     if (localStorage.getItem(str) === '') {
+       obj[str] = '';
+     } else {
+       obj[str] = JSON.parse([localStorage.getItem(str)]) || [];
+     }
+     return obj
+    }, {});
+   return object
+  } 
+  
   const clearList = () => {
     const listItems = document.querySelectorAll('.list-name')
     listItems.forEach(item => item.remove())
@@ -35,7 +38,7 @@ const lists = (() => {
   
   const render = () => {
     clearList()
-    Object.keys(storedList).forEach(key => {
+    Object.keys(storedList()).forEach(key => {
       const listItems = document.createElement('li')
       listItems.setAttribute('class', 'list-name')
       listItems.textContent = key
@@ -45,7 +48,7 @@ const lists = (() => {
   }
   
   const updateLocalStorage = () => {
-    return storedList
+    return storedList()
   }
 
   render()
@@ -54,12 +57,13 @@ const lists = (() => {
     e.preventDefault()
     const listItem = e.target.lists.value
     if (!(listItem === "")) {
-      localStorageTask[listItem] = ''
-      localStorage.setItem(listItem, '')
+      localStorageTask[listItem] = []
+      localStorage.setItem(listItem, JSON.stringify([]))
       const listItems = document.createElement('li')
       listItems.setAttribute('class', 'list-name')
       listItems.textContent = listItem
       lists.appendChild(listItems);
+      storedList()
       updateLocalStorage()
       switchListKey()
     } else {
@@ -69,6 +73,7 @@ const lists = (() => {
       }, 3000);
     }
     e.target.lists.value = ''
+     console.log(storedList())
   }
   
   form.addEventListener('submit', addListsItems) 
