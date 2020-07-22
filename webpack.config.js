@@ -1,7 +1,6 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 
 module.exports = {
   entry: './src/index.js',
@@ -21,48 +20,42 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "postcss-loader"
+            loader: 'postcss-loader',
           },
-          {
-            loader: "sass-loader",
-            options: {
-              implementation: require("sass")
-            }
-          }
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
 
   plugins: [
 
     new MiniCssExtractPlugin({
-      filename: "bundle.css"
+      filename: 'bundle.css',
     }),
-    new HtmlWebpackPlugin({ 
-      index: './src/index.html' 
-  })
-  
+    new HtmlWebpackPlugin({
+      index: './src/index.html',
+    }),
+
   ],
 
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 8000
+    port: 8000,
   },
-  mode: 'development'
+  mode: 'development',
 };
