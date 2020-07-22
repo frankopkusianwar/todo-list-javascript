@@ -21,48 +21,53 @@ const task = (() => {
     popUpForm.style.display = 'block'
   })
   
-  const renderTasks = (task) => {
-    const todoBody = document.querySelector('.todo-body')
-    const divTasks = document.createElement('div');
-    divTasks.setAttribute('class', 'tasks');
-    const divTask = document.createElement('div');
-    divTask.setAttribute('class', 'task');
-    const checkboxTask = document.createElement('input');
-    checkboxTask.setAttribute('type', 'checkbox');
-    checkboxTask.setAttribute('id', 'task-1');
-    const labelTask = document.createElement('label');
-    labelTask.setAttribute('for', 'task-1')
-    const spanTask = document.createElement('span');
-    spanTask.setAttribute('class', 'custom-checkbox')
-    labelTask.textContent = task.title
-    const descriptionTask = document.createElement('p');
-    descriptionTask.textContent = task.description
-    const dateTask = document.createElement('p');
-    dateTask.textContent = task.date
-    
-    const priorityTask = document.createElement('p');
-    priorityTask.textContent = task.priority
-    const trashTask = document.createElement('p');
-    trashTask.setAttribute('class', 'delete-tast')
-    trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
-    
-    const newTeskAlert = document.querySelector('.task-created-alert')
-    newTeskAlert.textContent = `${task.title} was successfully created`
-    newTeskAlert.style.display = 'block'
-    
-    labelTask.appendChild(spanTask)
-    divTask.appendChild(checkboxTask)
-    divTask.appendChild(labelTask)
-    divTask.appendChild(descriptionTask)
-    divTask.appendChild(dateTask)
-    divTask.appendChild(priorityTask)
-    divTask.appendChild(trashTask)
-    todoBody.appendChild(divTask)
-    
-    setTimeout(() => {
-      newTeskAlert.textContent = ''
-      newTeskAlert.style.display = 'none'
-    }, 3000);
+  const renderTasks = (tasks) => {
+    if(tasks !== '') {
+      Object.entries(tasks).forEach(([_,value]) => {
+        console.log('by',value)
+        const todoBody = document.querySelector('.todo-body')
+        const divTasks = document.createElement('div');
+        divTasks.setAttribute('class', 'tasks');
+        const divTask = document.createElement('div');
+        divTask.setAttribute('class', 'task');
+        const checkboxTask = document.createElement('input');
+        checkboxTask.setAttribute('type', 'checkbox');
+        checkboxTask.setAttribute('id', 'task-1');
+        const labelTask = document.createElement('label');
+        labelTask.setAttribute('for', 'task-1')
+        const spanTask = document.createElement('span');
+        spanTask.setAttribute('class', 'custom-checkbox')
+        labelTask.textContent = task.title
+        const descriptionTask = document.createElement('p');
+        descriptionTask.textContent = task.description
+        const dateTask = document.createElement('p');
+        dateTask.textContent = task.date
+        
+        const priorityTask = document.createElement('p');
+        priorityTask.textContent = task.priority
+        const trashTask = document.createElement('p');
+        trashTask.setAttribute('class', 'delete-tast')
+        trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+        
+        const newTeskAlert = document.querySelector('.task-created-alert')
+        newTeskAlert.textContent = `${task.title} was successfully created`
+        newTeskAlert.style.display = 'block'
+        
+        labelTask.appendChild(spanTask)
+        divTask.appendChild(checkboxTask)
+        divTask.appendChild(labelTask)
+        divTask.appendChild(descriptionTask)
+        divTask.appendChild(dateTask)
+        divTask.appendChild(priorityTask)
+        divTask.appendChild(trashTask)
+        todoBody.appendChild(divTask)
+        
+        setTimeout(() => {
+          newTeskAlert.textContent = ''
+          newTeskAlert.style.display = 'none'
+        }, 3000);
+      })
+    }
   }
 
   const updateLocalStorageTask = (newTask) => {
@@ -70,7 +75,9 @@ const task = (() => {
     const currentKey = lists.switchListKey()['key']
     storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
-    renderTasks(newTask)
+    const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))
+    console.log(getLocalStorageTasks)
+    renderTasks(getLocalStorageTasks)
   } 
 
   const checkingValidation = (title, description, date, priority, e) => {
