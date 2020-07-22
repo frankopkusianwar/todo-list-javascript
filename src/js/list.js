@@ -63,6 +63,7 @@ const lists = (() => {
       listItems.textContent = listItem
       lists.appendChild(listItems);
       updateLocalStorage()
+      switchListKey()
     } else {
       popupAlert.style.display = 'block'
       setTimeout(() => {
