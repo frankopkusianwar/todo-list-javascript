@@ -20,8 +20,16 @@ const task = (() => {
     const popUpForm = document.querySelector('.pop-up-form')
     popUpForm.style.display = 'block'
   })
+
+  const clearAllTasks = () => {
+    const tasks = document.querySelectorAll('.task')
+    tasks.forEach(task => {
+      task.remove()
+    })
+  }
   
   const renderTasks = (tasks) => {
+    clearAllTasks()
     if(tasks !== '') {
       Object.entries(tasks).forEach(([_,value]) => {
         if (value !== undefined) {
