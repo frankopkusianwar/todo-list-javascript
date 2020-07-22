@@ -87,8 +87,8 @@ const task = (() => {
     }))
   }
 
-  const lists = document.querySelectorAll('.list-name')
-  lists.forEach(list => list.addEventListener('click', () => {
+  const updatedList = document.querySelectorAll('.list-name')
+  updatedList.forEach(list => list.addEventListener('click', () => {
     renderListTasks()
   }))
 
