@@ -27,7 +27,7 @@ const task = (() => {
       task.remove()
     })
   }
-  
+
   const renderTasks = (tasks) => {
     clearAllTasks()
     if(tasks !== '') {
@@ -78,15 +78,26 @@ const task = (() => {
       })
     }
   }
+  
+  
+
+
+
+  const renderListTasks = (() => {
+    const lists = document.querySelectorAll('.list-name')
+    lists.forEach(list => list.addEventListener('click', (e) => {
+      let currentKey = e.target.textContent
+      const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))
+      renderTasks(getLocalStorageTasks)
+    }))
+  })()
 
   const updateLocalStorageTask = (newTask) => {
     const storage = lists.updateLocalStorage()
     if (storage === '' ) {
       storage = []
     }
-    console.log(storage)
     const currentKey = lists.switchListKey()['key']
-    console.log(currentKey)
     storage[currentKey].push(newTask)  
     localStorage.setItem(currentKey, JSON.stringify(storage[currentKey]))
     const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey))
@@ -94,18 +105,16 @@ const task = (() => {
   } 
 
   const checkingValidation = (title, description, date, priority, e) => {
-    // if (lists.switchListKey() !== und){
-      if (!(title === "" || description === "" || date === "" || priority === "")) {
-        const newTask = new Task(title, description, date, priority)
-        updateLocalStorageTask(newTask)
-        resetForm(e)
-      } else {
-        popupAlert.style.display = 'block'
-        setTimeout(() => {
-          popupAlert.style.display = 'none'
-        }, 3000);
-      }
-    // }
+    if (!(title === "" || description === "" || date === "" || priority === "")) {
+      const newTask = new Task(title, description, date, priority)
+      updateLocalStorageTask(newTask)
+      resetForm(e)
+    } else {
+      popupAlert.style.display = 'block'
+      setTimeout(() => {
+        popupAlert.style.display = 'none'
+      }, 3000);
+    }
   }
   
   const resetForm = (e) => {
