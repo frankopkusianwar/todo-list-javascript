@@ -7,10 +7,12 @@ const lists = (() => {
   let currentKey = {'key': ''}
   
   const switchListKey = () => {
+    const listTilte = document.querySelector('.list-title')
     const allListItem = document.querySelectorAll('.list-name')
     allListItem.forEach(list => list.addEventListener('click', (e) => {
       const key = e.target.textContent;
       currentKey['key'] = key
+      listTilte.textContent = key
     }))
     return currentKey
   }
