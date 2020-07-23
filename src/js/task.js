@@ -116,9 +116,12 @@ const task = (() => {
 
     removeTask.forEach(button => button.addEventListener('click', (e) => {
       const task = e.target.parentElement.parentElement.parentElement;
+      const taskBody = task.parentElement.parentElement
+      const taskListkey = taskBody.children[0].children[0].textContent
       task.classList.toggle('fall');
       task.remove()
-      
+      const storageGetTasks = JSON.parse(localStorage.getItem(taskListkey))
+      delete storageGetTasks[task]
     }));
   };
 
