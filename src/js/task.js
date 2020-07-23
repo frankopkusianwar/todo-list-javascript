@@ -22,7 +22,7 @@ const task = (() => {
     });
   };
 
-  const renderTasks = (tasks) => {
+  const renderTasks = (tasks = '') => {
     clearAllTasks();
     if (tasks !== '') {
       Object.values(tasks).forEach((value) => {
@@ -118,6 +118,7 @@ const task = (() => {
       const task = e.target.parentElement.parentElement.parentElement;
       task.classList.toggle('fall');
       task.remove()
+      
     }));
   };
 
@@ -128,8 +129,19 @@ const task = (() => {
       const listElement = document.querySelectorAll('.list-name')
       listElement.forEach(list => {
         if(list.textContent == currentList['key']){
+          const alertMessage = document.querySelector('.switch-list-alert')
+          const taskTitle = document.querySelector('.list-title')
+          taskTitle.textContent = ''
+
           list.remove()
           localStorage.removeItem(currentList['key']);
+          renderTasks()
+          alertMessage.style.display = 'block'
+          alertMessage.textContent = `${currentList['key']} successfully deleted`
+          setTimeout(() => {
+            alertMessage.textContent = '';
+            alertMessage.style.display = 'none';
+          }, 3000)
         }
       })
     })
@@ -173,6 +185,7 @@ const task = (() => {
       const newTask = new Task(title, description, date, priority);
       updateLocalStorageTask(newTask);
       resetForm(e);
+      deleteTask()
     } else {
       popupAlert.style.display = 'block';
       setTimeout(() => {
