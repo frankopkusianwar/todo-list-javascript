@@ -142,7 +142,7 @@ body {
 .todo-list {
   position: absolute;
   left:19.5%;
-  min-height: 300px;
+
   font-size: 1.3rem;
   width: 75vw;
   --spacer: 1.3rem;
@@ -303,7 +303,7 @@ body {
   display: none;
 }
 
-.pop-up-alert , .list-alert, .task-created-alert, .switch-list-alert {
+.pop-up-alert , .list-alert, .task-created-alert, .switch-list-alert, .task-deletion-alert {
   position: absolute;
   top: 16%;
   left: 19.5%;

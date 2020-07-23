@@ -67,13 +67,13 @@ const task = (() => {
           divTask.appendChild(trashTask);
           todoBody.appendChild(divTask);
           
-          newTeskAlert.textContent = `${value.title} was successfully created`;
+          newTeskAlert.textContent = `${value.title} task successfully created`;
           newTeskAlert.style.display = 'block';
 
           setTimeout(() => {
             newTeskAlert.textContent = '';
             newTeskAlert.style.display = 'none';
-          }, 3000);
+          }, 2000);
 
           const form = document.querySelector('.pop-up-form')
           form.style.display = 'none'
@@ -94,7 +94,7 @@ const task = (() => {
     setTimeout(() => {
       alertMessage.textContent = '';
       alertMessage.style.display = 'none';
-    }, 3000)
+    }, 2000)
   }
   
   const renderListTasks = () => {
@@ -108,6 +108,11 @@ const task = (() => {
       deleteTask()
       deleteList()
     }))
+    const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentList));
+    renderTasks(getLocalStorageTasks);
+    switchListAlert(currentList)
+    deleteTask()
+    deleteList()
     return currentList
   };
 
@@ -118,10 +123,28 @@ const task = (() => {
       const task = e.target.parentElement.parentElement.parentElement;
       const taskBody = task.parentElement.parentElement
       const taskListkey = taskBody.children[0].children[0].textContent
-      task.classList.toggle('fall');
-      task.remove()
+      const title = task.children[0].children[1].textContent
+      const description = task.children[2].textContent
+      const date = task.children[3].textContent
       const storageGetTasks = JSON.parse(localStorage.getItem(taskListkey))
-      delete storageGetTasks[task]
+      task.classList.toggle('fall');
+
+      const deletedTask = storageGetTasks.find(task => {
+        return task.title === title && task.description === description && task.date === date
+      })
+
+      const updatedStorageTasks =  storageGetTasks.filter( obj => obj !== deletedTask)
+      let deleteTaskAlert = document.querySelector('.task-deletion-alert')
+      deleteTaskAlert.style.display = 'block'
+      deleteTaskAlert.textContent = `${title} task successfully deleted`
+
+      setTimeout(() => {
+        deleteTaskAlert.textContent = ''
+        deleteTaskAlert.style.display = 'none'
+      }, 2000)
+
+      localStorage.setItem(taskListkey, JSON.stringify(updatedStorageTasks))
+      task.remove()
     }));
   };
 
@@ -140,18 +163,18 @@ const task = (() => {
           localStorage.removeItem(currentList['key']);
           renderTasks()
           alertMessage.style.display = 'block'
-          alertMessage.textContent = `${currentList['key']} successfully deleted`
+          alertMessage.textContent = `${currentList['key']} list successfully deleted`
           setTimeout(() => {
             alertMessage.textContent = '';
             alertMessage.style.display = 'none';
-          }, 3000)
+          }, 2000)
         }
       })
     })
   }
   
   createButton.addEventListener('click', () => {
-    if (renderListTasks() !== '') {
+    if (lists.switchListKey().key !== '') {
       const popUpForm = document.querySelector('.pop-up-form');
       popUpForm.style.display = 'block';
     } else {
@@ -193,7 +216,7 @@ const task = (() => {
       popupAlert.style.display = 'block';
       setTimeout(() => {
         popupAlert.style.display = 'none';
-      }, 3000);
+      }, 2000);
     }
   };
 
