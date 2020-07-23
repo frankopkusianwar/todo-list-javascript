@@ -44,14 +44,18 @@ const task = (() => {
           labelTask.setAttribute('for', 'task-1');
           const spanTask = document.createElement('span');
           spanTask.setAttribute('class', 'custom-checkbox');
-          labelTask.textContent = value.title;
+          const titleDiv = document.createElement('div');
+          titleDiv.textContent = value.title;
           const descriptionTask = document.createElement('p');
+          descriptionTask.setAttribute('class', 'description-task')
           descriptionTask.textContent = value.description;
           const dateTask = document.createElement('p');
           dateTask.textContent = value.date;
+          dateTask.setAttribute('class', 'date')
 
           const priorityTask = document.createElement('p');
           priorityTask.textContent = value.priority;
+          priorityTask.setAttribute('class', 'priority')
           const trashTask = document.createElement('p');
           trashTask.setAttribute('class', 'delete-tast');
           trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
@@ -61,8 +65,9 @@ const task = (() => {
           newTeskAlert.style.display = 'block';
 
           labelTask.appendChild(spanTask);
-          divTask.appendChild(checkboxTask);
+          labelTask.appendChild(titleDiv)
           divTask.appendChild(labelTask);
+          divTask.appendChild(checkboxTask);
           divTask.appendChild(descriptionTask);
           divTask.appendChild(dateTask);
           divTask.appendChild(priorityTask);

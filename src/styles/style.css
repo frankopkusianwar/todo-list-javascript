@@ -5,16 +5,14 @@
 }
 
 :root {
-  --clr-primary: #393f4d;
+  --clr-primary:#2a1b3c;
   --clr-light: #f4f4f4;
   --clr-dark: #333;
-  --clr-warning: rgb(99, 36, 36);
+
 }
 
 body {
   margin-top: 25vh;
-  display: flex;
-  justify-content: space-around;
   font-family: "Work Sans", sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
@@ -22,7 +20,17 @@ body {
   color: var(--clr-light);
 }
 
-form {
+.header {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 3rem;
+  font-weight: 1000;
+  letter-spacing: 5px;
+}
+
+#form {
   display: flex;
 }
 
@@ -61,6 +69,7 @@ form {
   padding: 0.25em;
   transition: border-bottom 150ms ease-in;
   order: 2;
+  width: 50%;
 }
 
 .new::-webkit-input-placeholder {
@@ -131,18 +140,21 @@ form {
 }
 
 .todo-list {
-  width: 70vw;
-
-  --spacer: 1.8rem;
-
+  position: absolute;
+  left:19.5%;
+  min-height: 300px;
+  font-size: 1.3rem;
+  width: 75vw;
+  --spacer: 1.3rem;
   background: var(--clr-light);
   color: var(--clr-dark);
 }
 
 .todo-header {
   padding: var(--spacer);
-  background: #e4e4e4;
+  background-color: #777;
   text-align: center;
+  color: white;
 }
 
 .todo-body {
@@ -152,7 +164,6 @@ form {
 
 [type="checkbox"] {
   opacity: 0;
-  position: absolute;
 }
 
 .task label {
@@ -161,11 +172,47 @@ form {
   position: relative;
 }
 
+.all-tasks {
+  position: absolute;
+  top: 15.5vh;
+  left: 3vh;
+}
+
 .task {
-  display: flex;
-  justify-content: space-around;
   position: relative;
   margin-bottom: 1.25em;
+}
+
+.task label div {
+  position: absolute;
+  display: flex;
+  left: 35px;
+  width: max-content;
+}
+
+.description-task {
+  position: absolute;
+  top: 0;
+  left: 35%;
+}
+
+.date {
+  position: absolute;
+  top: 0;
+  right: 20%; 
+}
+
+.priority {
+  position: absolute;
+  top: 0;
+  left: 85%; 
+}
+
+.delete-tast {
+  position: absolute;
+  color: rgb(99, 36, 36);
+  top: 0;
+  left:97%; 
 }
 
 .task::after {
@@ -180,12 +227,12 @@ form {
 }
 
 .custom-checkbox {
-  --size: 0.75em;
-
-  display: inline-block;
-  width: var(--size);
-  height: var(--size);
-  margin-right: var(--size);
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
   cursor: pointer;
   border: 2px solid currentColor;
   border-radius: 50%;
@@ -249,14 +296,19 @@ form {
 
 .pop-up-form {
   position: absolute;
-  top: 70%;
+  top: 50%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
   display: none;
 }
 
-.pop-up-alert {
+.pop-up-alert , .list-alert, .task-created-alert {
   position: absolute;
+  top: 16%;
+  left: 19.5%;
   color: black;
-  width: 70%;
+  width: 75%;
   background-color: aqua;
   border-radius: 5px;
   text-align: center;
@@ -274,4 +326,49 @@ form {
   transition: transform 500ms ease-in-out, -webkit-transform 150ms ease-in-out;
   transform: translateY(8rem) rotate(20deg);
   opacity: 0;
+}
+
+.background {
+  position: absolute;
+  top: 14vh;
+  left: 14%;
+  width: 86%;
+  height: 86vh;
+  z-index: -100;
+  border: 2px solid #545557;
+  background-color: #a4b3b6;
+  border-radius: 10px;
+}
+
+#task-form {
+  background-color: cadetblue;
+  width: 100%;
+  height: 40vh;
+}
+
+
+.item {
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.priority-radio-button {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  width: max-content;
+}
+
+.task-btn {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%,-50%);
+}
+
+#list-date {
+  padding-left: 10%;
 }
