@@ -16,7 +16,7 @@ const lists = (() => {
     }));
     return currentKey;
   };
-  
+
   allListItem.forEach(list => list.addEventListener('click', () => {
     switchListKey();
   }));
@@ -54,15 +54,15 @@ const lists = (() => {
   render();
 
   const successAlert = (list) => {
-    const listCreatedAlert = document.querySelector('.switch-list-alert')
-    listCreatedAlert.style.display = 'block'
-    listCreatedAlert.textContent = `${list} list successfully created`
+    const listCreatedAlert = document.querySelector('.switch-list-alert');
+    listCreatedAlert.style.display = 'block';
+    listCreatedAlert.textContent = `${list} list successfully created`;
 
     setTimeout(() => {
-      listCreatedAlert.textContent = ''
-      listCreatedAlert.style.display = 'none'
-    }, 2000)
-  }
+      listCreatedAlert.textContent = '';
+      listCreatedAlert.style.display = 'none';
+    }, 2000);
+  };
 
   const addListsItems = (e) => {
     e.preventDefault();
@@ -73,7 +73,7 @@ const lists = (() => {
       const listItems = document.createElement('li');
       listItems.setAttribute('class', 'list-name');
       listItems.textContent = listItem;
-      lists.appendChild(listItems)
+      lists.appendChild(listItems);
       successAlert(listItem);
       storedList();
       updateLocalStorage();
