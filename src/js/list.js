@@ -16,7 +16,7 @@ const lists = (() => {
     }));
     return currentKey;
   };
-
+  
   allListItem.forEach(list => list.addEventListener('click', () => {
     switchListKey();
   }));

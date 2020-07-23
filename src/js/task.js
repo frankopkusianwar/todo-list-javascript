@@ -106,6 +106,7 @@ const task = (() => {
       renderTasks(getLocalStorageTasks);
       switchListAlert(currentKey)
       deleteTask()
+      deleteList()
     }))
     return currentList
   };
@@ -119,6 +120,20 @@ const task = (() => {
       task.remove()
     }));
   };
+
+  const deleteList = () => {
+  const deleteItem = document.querySelector('.removeList')
+    deleteItem.addEventListener('click', () => {
+      const currentList = lists.switchListKey()
+      const listElement = document.querySelectorAll('.list-name')
+      listElement.forEach(list => {
+        if(list.textContent == currentList['key']){
+          list.remove()
+          localStorage.removeItem(currentList['key']);
+        }
+      })
+    })
+  }
   
   createButton.addEventListener('click', () => {
     if (renderListTasks() !== '') {
