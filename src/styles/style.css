@@ -303,7 +303,7 @@ body {
   display: none;
 }
 
-.pop-up-alert , .list-alert, .task-created-alert {
+.pop-up-alert , .list-alert, .task-created-alert, .switch-list-alert {
   position: absolute;
   top: 16%;
   left: 19.5%;
@@ -314,6 +314,10 @@ body {
   text-align: center;
   padding: 10px;
   display: none;
+}
+
+.switch-list-alert {
+  z-index: 10;
 }
 
 .list-alert {

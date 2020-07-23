@@ -15,11 +15,6 @@ const task = (() => {
   const popupAlert = document.querySelector('.pop-up-alert');
   const radioButton = document.querySelectorAll('.radio-button');
 
-  createButton.addEventListener('click', () => {
-    const popUpForm = document.querySelector('.pop-up-form');
-    popUpForm.style.display = 'block';
-  });
-
   const clearAllTasks = () => {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(task => {
@@ -61,9 +56,7 @@ const task = (() => {
           trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 
           const newTeskAlert = document.querySelector('.task-created-alert');
-          newTeskAlert.textContent = `${value.title} was successfully created`;
-          newTeskAlert.style.display = 'block';
-
+          
           labelTask.appendChild(spanTask);
           labelTask.appendChild(titleDiv)
           divTask.appendChild(labelTask);
@@ -73,24 +66,68 @@ const task = (() => {
           divTask.appendChild(priorityTask);
           divTask.appendChild(trashTask);
           todoBody.appendChild(divTask);
+          
+          newTeskAlert.textContent = `${value.title} was successfully created`;
+          newTeskAlert.style.display = 'block';
 
           setTimeout(() => {
             newTeskAlert.textContent = '';
             newTeskAlert.style.display = 'none';
           }, 3000);
+
+          const form = document.querySelector('.pop-up-form')
+          form.style.display = 'none'
         }
       });
     }
   };
 
+  const switchListAlert = (list = undefined) => {
+    const alertMessage = document.querySelector('.switch-list-alert')
+    if (list !== undefined) {
+      alertMessage.textContent = `Switched to ${list}`
+      alertMessage.style.display = 'block'
+    } else {
+      alertMessage.style.display = 'block'
+      alertMessage.textContent = 'Please select the list to add a task'
+    }
+    setTimeout(() => {
+      alertMessage.textContent = '';
+      alertMessage.style.display = 'none';
+    }, 3000)
+  }
+  
   const renderListTasks = () => {
-    const lists = document.querySelectorAll('.list-name');
-    lists.forEach(list => list.addEventListener('click', (e) => {
+    const newLists = document.querySelectorAll('.list-name');
+    let currentList = lists.switchListKey().key
+    newLists.forEach(list => list.addEventListener('click', (e) => {
       const currentKey = e.target.textContent;
       const getLocalStorageTasks = JSON.parse(localStorage.getItem(currentKey));
       renderTasks(getLocalStorageTasks);
+      switchListAlert(currentKey)
+      deleteTask()
+    }))
+    return currentList
+  };
+
+  const deleteTask = () => {
+    const removeTask = document.querySelectorAll('.delete-tast');
+
+    removeTask.forEach(button => button.addEventListener('click', (e) => {
+      const task = e.target.parentElement.parentElement.parentElement;
+      task.classList.toggle('fall');
+      task.remove()
     }));
   };
+  
+  createButton.addEventListener('click', () => {
+    if (renderListTasks() !== '') {
+      const popUpForm = document.querySelector('.pop-up-form');
+      popUpForm.style.display = 'block';
+    } else {
+      switchListAlert()
+    }
+  });
 
   const updatedList = document.querySelectorAll('.list-name');
   updatedList.forEach(list => list.addEventListener('click', () => {
@@ -129,15 +166,6 @@ const task = (() => {
     }
   };
 
-  const deleteTask = () => {
-    const removeTask = document.querySelectorAll('.delete-tast');
-
-    removeTask.forEach(button => button.addEventListener('click', (e) => {
-      const task = e.target.parentElement.parentElement.parentElement;
-      task.classList.toggle('fall');
-    }));
-  };
-
   const addTask = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
@@ -145,9 +173,9 @@ const task = (() => {
     const date = e.target.date.value;
     const priority = e.target.priority.value;
     checkingValidation(title, description, date, priority, e.target);
-    deleteTask();
   };
-
+    
+  
   form.addEventListener('submit', addTask);
 })();
 
