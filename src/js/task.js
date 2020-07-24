@@ -41,7 +41,7 @@ const task = (() => {
           spanTask.setAttribute('class', 'custom-checkbox');
           const descriptionTask = document.createElement('p');
           const titleTask = document.createElement('p');
-          titleTask.setAttribute('class', 'title-task')
+          titleTask.setAttribute('class', 'title-task');
           titleTask.textContent = value.title;
           descriptionTask.setAttribute('class', 'description-task');
           descriptionTask.textContent = value.description;
@@ -56,9 +56,9 @@ const task = (() => {
           trashTask.setAttribute('class', 'delete-tast');
           trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 
-          
+
           labelTask.appendChild(spanTask);
-          labelTask.appendChild(titleTask)
+          labelTask.appendChild(titleTask);
           labelTask.appendChild(descriptionTask);
           labelTask.appendChild(dateTask);
           labelTask.appendChild(priorityTask);
@@ -66,7 +66,7 @@ const task = (() => {
           divTask.appendChild(checkboxTask);
           divTask.appendChild(labelTask);
           todoBody.appendChild(divTask);
-          
+
           const form = document.querySelector('.pop-up-form');
           form.style.display = 'none';
         }
@@ -98,7 +98,7 @@ const task = (() => {
       //   const toggleTask = document.querySelector('.task')
       //   toggleTask.classList.toggle('fall');
       // }
-      
+
       setTimeout(() => {
         deleteTaskAlert.textContent = '';
         deleteTaskAlert.style.display = 'none';
@@ -106,7 +106,6 @@ const task = (() => {
       }, 500);
 
       localStorage.setItem(taskListkey, JSON.stringify(updatedStorageTasks));
-
     }));
   };
 
@@ -125,7 +124,7 @@ const task = (() => {
 
           list.remove();
           localStorage.removeItem(currentList.key);
-          document.querySelector('.todo-list').style.display = 'none'
+          document.querySelector('.todo-list').style.display = 'none';
           setTimeout(() => {
             alertMessage.textContent = '';
             alertMessage.style.display = 'none';
@@ -133,8 +132,8 @@ const task = (() => {
         }
         if (currentList.key === '') {
           const alertMessage = document.querySelector('.task-deletion-alert');
-          alertMessage.style.display = 'block'
-          alertMessage.textContent = 'Please select a list to delete'
+          alertMessage.style.display = 'block';
+          alertMessage.textContent = 'Please select a list to delete';
 
           setTimeout(() => {
             alertMessage.textContent = '';
@@ -142,32 +141,31 @@ const task = (() => {
           }, 2500);
         }
       });
-      
     });
   };
 
-  deleteList()
+  deleteList();
 
   const alertTimer = (alertMessage) => {
     setTimeout(() => {
       alertMessage.textContent = '';
       alertMessage.style.display = 'none';
     }, 3000);
-  }
+  };
 
   const switchListAlert = (list = undefined) => {
     if (list !== undefined) {
-      document.querySelector('.todo-list').style.display = 'block'
+      document.querySelector('.todo-list').style.display = 'block';
       const alertMessage = document.querySelector('.switch-list-alert');
       alertMessage.textContent = `Switched to ${list}`;
       alertMessage.style.display = 'block';
-      alertTimer(alertMessage)
+      alertTimer(alertMessage);
     } else {
       const alertMessage = document.querySelector('.task-deletion-alert');
       alertMessage.style.display = 'block';
       alertMessage.textContent = 'Please select the list to add a task';
-      alertTimer(alertMessage)
-    } 
+      alertTimer(alertMessage);
+    }
   };
 
   const renderListTasks = () => {
@@ -228,14 +226,14 @@ const task = (() => {
 
   const newTaskCreatedAlert = () => {
     const newTeskAlert = document.querySelector('.task-created-alert');
-    newTeskAlert.textContent =  "New task successfully created";
+    newTeskAlert.textContent = 'New task successfully created';
     newTeskAlert.style.display = 'block';
-  
+
     setTimeout(() => {
       newTeskAlert.textContent = '';
       newTeskAlert.style.display = 'none';
     }, 3000);
-  }
+  };
 
   const checkingValidation = (title, description, date, priority, e) => {
     if (!(title === '' || description === '' || date === '' || priority === '')) {
@@ -243,7 +241,7 @@ const task = (() => {
       updateLocalStorageTask(newTask);
       resetForm(e);
       deleteTask();
-      newTaskCreatedAlert()
+      newTaskCreatedAlert();
     } else {
       popupAlert.style.display = 'block';
       setTimeout(() => {
@@ -263,7 +261,7 @@ const task = (() => {
 
 
   form.addEventListener('submit', addTask);
-  return {renderTasks}
+  return { renderTasks };
 })();
 
 export default task;

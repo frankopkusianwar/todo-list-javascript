@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -18,14 +19,12 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/i,
         use: [
           // Creates `style` nodes from JS strings
           'style-loader',
           // Translates CSS into CommonJS
           'css-loader',
-          'postcss-loader',
-
         ],
       },
     ],

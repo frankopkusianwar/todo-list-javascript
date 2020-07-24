@@ -1,4 +1,5 @@
-import task from './task.js'
+import task from './task';
+
 const lists = (() => {
   const lists = document.querySelector('.task-list');
   const form = document.querySelector('#form');
@@ -14,7 +15,7 @@ const lists = (() => {
       const key = e.target.textContent;
       currentKey.key = key;
       listTilte.textContent = key;
-      task.renderTasks()
+      task.renderTasks();
     }));
     return currentKey;
   };
@@ -78,7 +79,7 @@ const lists = (() => {
       lists.appendChild(listItems);
       storedList();
       switchListKey();
-      successAlert(listItem)
+      successAlert(listItem);
     } else {
       popupAlert.style.display = 'block';
       setTimeout(() => {
