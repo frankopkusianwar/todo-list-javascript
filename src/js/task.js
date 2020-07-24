@@ -85,7 +85,6 @@ const task = (() => {
       const description = task.children[2].textContent;
       const date = task.children[3].textContent;
       const storageGetTasks = JSON.parse(localStorage.getItem(taskListkey));
-      task.classList.toggle('fall');
 
       const deletedTask = storageGetTasks.find(task => task.title === title
         && task.description === description && task.date === date);
@@ -95,14 +94,19 @@ const task = (() => {
       deleteTaskAlert.style.display = 'block';
       deleteTaskAlert.textContent = `${title} task successfully deleted`;
 
+      // if (taskListkey === lists.switchListKey().key) {
+      //   const toggleTask = document.querySelector('.task')
+      //   toggleTask.classList.toggle('fall');
+      // }
+      
       setTimeout(() => {
         deleteTaskAlert.textContent = '';
         deleteTaskAlert.style.display = 'none';
-      }, 3000);
+        task.parentElement.remove();
+      }, 500);
 
       localStorage.setItem(taskListkey, JSON.stringify(updatedStorageTasks));
 
-      task.parentElement.remove();
     }));
   };
 
@@ -127,7 +131,7 @@ const task = (() => {
             alertMessage.style.display = 'none';
           }, 3000);
         }
-        if (currentList.key === 'undefined') {
+        if (currentList.key === '') {
           const alertMessage = document.querySelector('.task-deletion-alert');
           alertMessage.style.display = 'block'
           alertMessage.textContent = 'Please select a list to delete'
@@ -223,7 +227,6 @@ const task = (() => {
   };
 
   const newTaskCreatedAlert = () => {
-    const newListsObj = lists.updateLocalStorage()
     const newTeskAlert = document.querySelector('.task-created-alert');
     newTeskAlert.textContent =  "New task successfully created";
     newTeskAlert.style.display = 'block';

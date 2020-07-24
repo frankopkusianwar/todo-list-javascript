@@ -327,11 +327,15 @@ body {
 }
 
 .fall {
-  transition: -webkit-transform 500ms ease-in-out;
-  transition: transform 500ms ease-in-out;
-  transition: transform 500ms ease-in-out, -webkit-transform 150ms ease-in-out;
-  transform: translateY(8rem) rotate(20deg);
-  opacity: 0;
+  transform: translateY(10rem) rotate(0deg);
+  animation: mymove 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+  
 }
 
 .background, .background2 {
