@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import task from './js/task';
 import list from './js/list';
+import './styles/style.css';
 
 /* eslint-disable */
 task;
