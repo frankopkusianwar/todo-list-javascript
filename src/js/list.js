@@ -1,3 +1,4 @@
+import task from './task.js'
 const lists = (() => {
   const lists = document.querySelector('.task-list');
   const form = document.querySelector('#form');
@@ -13,6 +14,7 @@ const lists = (() => {
       const key = e.target.textContent;
       currentKey.key = key;
       listTilte.textContent = key;
+      task.renderTasks()
     }));
     return currentKey;
   };
@@ -54,14 +56,14 @@ const lists = (() => {
   render();
 
   const successAlert = (list) => {
-    const listCreatedAlert = document.querySelector('.switch-list-alert');
+    const listCreatedAlert = document.querySelector('.task-created-alert');
     listCreatedAlert.style.display = 'block';
     listCreatedAlert.textContent = `${list} list successfully created`;
 
     setTimeout(() => {
       listCreatedAlert.textContent = '';
       listCreatedAlert.style.display = 'none';
-    }, 2000);
+    }, 5000);
   };
 
   const addListsItems = (e) => {
@@ -74,10 +76,9 @@ const lists = (() => {
       listItems.setAttribute('class', 'list-name');
       listItems.textContent = listItem;
       lists.appendChild(listItems);
-      successAlert(listItem);
       storedList();
-      updateLocalStorage();
       switchListKey();
+      successAlert(listItem)
     } else {
       popupAlert.style.display = 'block';
       setTimeout(() => {

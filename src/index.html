@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <header class="header">TODO LIST</header>
+  <header class="header">To-Do List</header>
   <div class="all-tasks">
     <h2 class="task-list-title">My lists</h2>
     <ul class="task-list">
       <li class="list-name">Youtube</li>
     </ul>
     <form id=form>
-      <input type="text" class="new list" id="lists" name="lists" placeholder="new list name" value="lists">
+      <input type="text" class="new list" id="lists" name="lists" placeholder="new list name">
       <button class="btn create" aria-label="create new list">+</button>
     </form>
   </div>
@@ -39,45 +39,28 @@
 
   <div class="todo-list">
     <div class="todo-header">
-      <h2 class="list-title">Sample YouTube</h2>
+      <h2 class="list-title">Example YouTube List</h2>
     </div>
-
     <div class="todo-body">
-      <div class="tasks">
-        <!-- <div class="task">
-          <input type="checkbox" id="task-1">
-          <label for="task-1">
-            <span class="custom-checkbox"></span>
-            <div>Record an awesome video</div>
-          </label>
-          <p class="description-task">About how to make Todo-List</p>
-          <p class="date">2020-07-16</p>
-          <p class="priority">medium</p>
-          <p class="delete-tast"><i class="fa fa-trash" aria-hidden="true"></i></p>
-        </div> -->
-      </div>
-    </div>
-    <!-- <div class="todo-body">
       <div class="tasks">
         <div class="task">
           <input type="checkbox" id="task-1" />
           <label for="task-1">
             <span class="custom-checkbox"></span>
-            <div>record todo list video</div> 
+            <p class="title-task">Record todo list video</p>
+            <p class="description-task">About how to make Todo-List</p>
+            <p class="date">2020-07-16</p>
+            <p class="priority">medium</p>
           </label>
-          <p> soem sffssafdas</p>
-          <p class="description"> 10-23-33</p>
-          <p class='high'>High </p>
           <p class="delete-tast"><i class="fa fa-trash" aria-hidden="true"></i></p>
         </div>
       </div>
-    </div> -->
-    <div class="new-task-creator">
-        <button class="btn create" aria-label="create new task">+ Add New Task</button>
     </div>
-
-    <div class="delete-stuff">
-      <button class="btn delete removeList">Delete list</button>
+    <div class=" ">
+      <div class="new-task-creator buttons">
+        <button class="btn create add-new-task-button" aria-label="create new task">+ Add New Task</button>
+        <button class="btn delete removeList">Delete list</button>
+      </div>
     </div>
   </div>
   
@@ -91,6 +74,8 @@
   <div class="task-created-alert"></div>
   <div class="task-deletion-alert"></div>
   <div class="background"></div>
+  <div class="background-blur"></div>
+  <div class="background2"></div>
   
   <script src="../dist/bundle.js"></script>
 </body>
