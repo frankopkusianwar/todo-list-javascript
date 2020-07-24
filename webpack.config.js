@@ -42,20 +42,15 @@ module.exports = {
   },
 
   plugins: [
-
-    new MiniCssExtractPlugin({
-      filename: 'bundle.css',
-    }),
     new HtmlWebpackPlugin({
       index: './src/index.html',
+      filename: './index.html',
     }),
-
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 8000,
-  },
   mode: 'development',
 };
