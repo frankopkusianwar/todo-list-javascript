@@ -22,7 +22,7 @@
 
 <br />
 <p align="center">
-  <a href="git@github.com:jaspreet-singh-sahota/tic-tac-toe-javascript.git">
+  <a href="git@github.com:frankopkusianwar/todo-list-javascript.git">
     <p align="center"> <img src="https://user-images.githubusercontent.com/55361440/87301597-7d9f1800-c52d-11ea-84e7-7a5684626b3f.png" alt="JavaScript" width="100" height="100"> </p>
   </a>
 
@@ -30,9 +30,9 @@
   <h3 align="center"> This project is part of the Microverse curriculum in JavaScript module! </h3>
 
   <p align="center">
-    <a href="https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/issues">Report Bug</a>
+    <a href="https://github.com/frankopkusianwar/todo-list-javascript/issues">Report Bug</a>
     · 
-    <a href="https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/issues">Request Feature</a>
+    <a href="https://github.com/frankopkusianwar/todo-list-javascript/issues">Request Feature</a>
   </p>
 </p>
 
@@ -58,12 +58,10 @@ In this project, we have build a Todo List App. The project follows the lesson a
 - A user can delete a task within a list 
 - A user can select a specific list to view all the tasks it contains
 
-## Live Link (Netlify)
+## Live Link 
 
-- https://super-tic-tac-toe-jassi.netlify.app/
+[Click Here](https://raw.githack.com/frankopkusianwar/todo-list-javascript/feature-todo/dist/index.html)
 
-
-![Peek 2020-07-13 18-47](https://user-images.githubusercontent.com/55361440/87308921-8f86b800-c539-11ea-847e-9f200a187b67.gif)
 
 <!-- BUILD WITH -->
 ## Built With
@@ -84,12 +82,26 @@ To run Todo-List-project locally, clone the repository, navigate to it's contain
 git@github.com:frankopkusianwar/todo-list-javascript.git
 cd todo-list-javascript
 npm install
-npm run watch
+npm start
 ```
 
 Now you can open `src/index.html` in your browser to see todo list app up and running.
 
 Enjoy using it.
+
+## How it works
+
+- Creating new list
+
+![Peek 2020-07-25 23-11](https://user-images.githubusercontent.com/55361440/88463150-4dad2880-cece-11ea-9ab2-b0f9e69c6a53.gif)
+
+- Creating new task
+
+![Peek 2020-07-25 23-15](https://user-images.githubusercontent.com/55361440/88463153-50a81900-cece-11ea-8ccf-93333bd6b400.gif)
+
+- Deletion of task and list
+
+![Peek 2020-07-25 23-22](https://user-images.githubusercontent.com/55361440/88463154-5271dc80-cece-11ea-9275-eb526680024a.gif)
 
 <!-- CONTACT -->
 ## Authors
@@ -113,14 +125,14 @@ Give a ⭐️ if you like this project!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jaspreet-singh-sahota/tic-tac-toe-javascript.svg?style=flat-square
-[contributors-url]: https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jaspreet-singh-sahota/tic-tac-toe-javascript.svg?style=flat-square
-[forks-url]: https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/network/members
-[stars-shield]: https://img.shields.io/github/stars/jaspreet-singh-sahota/tic-tac-toe-javascript.svg?style=flat-square
-[stars-url]: https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jaspreet-singh-sahota/tic-tac-toe-javascript.svg?style=flat-square
-[issues-url]: https://github.com/jaspreet-singh-sahota/tic-tac-toe-javascript/issues
+[contributors-shield]: https://img.shields.io/github/contributors/frankopkusianwar/todo-list-javascript.svg?style=flat-square
+[contributors-url]: https://github.com/frankopkusianwar/todo-list-javascript/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/frankopkusianwar/todo-list-javascript.svg?style=flat-square
+[forks-url]: https://github.com/frankopkusianwar/todo-list-javascript/network/members
+[stars-shield]: https://img.shields.io/github/stars/frankopkusianwar/todo-list-javascript.svg?style=flat-square
+[stars-url]: https://github.com/frankopkusianwar/todo-list-javascript/stargazers
+[issues-shield]: https://img.shields.io/github/issues/frankopkusianwar/todo-list-javascript.svg?style=flat-square
+[issues-url]: https://github.com/frankopkusianwar/todo-list-javascript/issues
 
 ## 📝 License
 
