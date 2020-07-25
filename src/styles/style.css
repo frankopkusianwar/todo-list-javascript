@@ -262,7 +262,7 @@ body {
 .task label::after, .description-task::after {
   content: "";
   position: absolute;
-  right: 3.3em;
+  right: 3.6em;
   left: 1.1em;
   top: 50%;
   height: 3px;

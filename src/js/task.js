@@ -25,7 +25,8 @@ const task = (() => {
   const renderTasks = (tasks = '') => {
     clearAllTasks();
     if (tasks !== '') {
-      Object.values(tasks).forEach((value) => {
+      const value = Object.values(tasks);
+      for (let i = 0; i < value.length; i++) {
         if (value !== undefined) {
           const todoBody = document.querySelector('.todo-body');
           const divTasks = document.createElement('div');
@@ -34,23 +35,23 @@ const task = (() => {
           divTask.setAttribute('class', 'task');
           const checkboxTask = document.createElement('input');
           checkboxTask.setAttribute('type', 'checkbox');
-          checkboxTask.setAttribute('id', 'task-1');
+          checkboxTask.setAttribute('id', `task-${i}`);
           const labelTask = document.createElement('label');
-          labelTask.setAttribute('for', 'task-1');
+          labelTask.setAttribute('for', `task-${i}`);
           const spanTask = document.createElement('span');
           spanTask.setAttribute('class', 'custom-checkbox');
           const descriptionTask = document.createElement('p');
           const titleTask = document.createElement('p');
           titleTask.setAttribute('class', 'title-task');
-          titleTask.textContent = value.title;
+          titleTask.textContent = value[i].title;
           descriptionTask.setAttribute('class', 'description-task');
-          descriptionTask.textContent = value.description;
+          descriptionTask.textContent = value[i].description;
           const dateTask = document.createElement('p');
-          dateTask.textContent = value.date;
+          dateTask.textContent = value[i].date;
           dateTask.setAttribute('class', 'date');
 
           const priorityTask = document.createElement('p');
-          priorityTask.textContent = value.priority;
+          priorityTask.textContent = value[i].priority;
           priorityTask.setAttribute('class', 'priority');
           const trashTask = document.createElement('p');
           trashTask.setAttribute('class', 'delete-tast');
@@ -62,15 +63,16 @@ const task = (() => {
           labelTask.appendChild(descriptionTask);
           labelTask.appendChild(dateTask);
           labelTask.appendChild(priorityTask);
-          labelTask.appendChild(trashTask);
           divTask.appendChild(checkboxTask);
           divTask.appendChild(labelTask);
-          todoBody.appendChild(divTask);
+          divTask.appendChild(trashTask);
+          divTasks.appendChild(divTask)
+          todoBody.appendChild(divTasks);
 
           const form = document.querySelector('.pop-up-form');
           form.style.display = 'none';
         }
-      });
+      };
     }
   };
 
@@ -81,9 +83,9 @@ const task = (() => {
       const task = e.target.parentElement.parentElement.parentElement;
       const taskBody = task.parentElement.parentElement.parentElement;
       const taskListkey = taskBody.children[0].children[0].textContent;
-      const title = task.children[1].textContent;
-      const description = task.children[2].textContent;
-      const date = task.children[3].textContent;
+      const title = task.children[1].children[1].textContent;
+      const description = task.children[1].children[2].textContent;
+      const date = task.children[1].children[3].textContent;
       const storageGetTasks = JSON.parse(localStorage.getItem(taskListkey));
 
       const deletedTask = storageGetTasks.find(task => task.title === title
@@ -94,17 +96,12 @@ const task = (() => {
       deleteTaskAlert.style.display = 'block';
       deleteTaskAlert.textContent = `${title} task successfully deleted`;
 
-      // if (taskListkey === lists.switchListKey().key) {
-      //   const toggleTask = document.querySelector('.task')
-      //   toggleTask.classList.toggle('fall');
-      // }
-
       setTimeout(() => {
         deleteTaskAlert.textContent = '';
         deleteTaskAlert.style.display = 'none';
-        task.parentElement.remove();
-      }, 500);
-
+      }, 3000);
+      
+      task.parentElement.remove();
       localStorage.setItem(taskListkey, JSON.stringify(updatedStorageTasks));
     }));
   };
@@ -258,7 +255,6 @@ const task = (() => {
     const priority = e.target.priority.value;
     checkingValidation(title, description, date, priority, e.target);
   };
-
 
   form.addEventListener('submit', addTask);
   return { renderTasks };

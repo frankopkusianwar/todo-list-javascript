@@ -26,8 +26,7 @@ const lists = (() => {
 
   const storedList = () => {
     const object = Object.keys(localStorage).reduce((obj, str) => {
-      if (localStorage.getItem(str) === '') {
-        obj[str] = '';
+      if (str === 'loglevel:webpack-dev-server') {
       } else {
         obj[str] = JSON.parse([localStorage.getItem(str)]) || [];
       }
