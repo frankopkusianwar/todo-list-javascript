@@ -1,4 +1,6 @@
+/* eslint-disable */
 import lists from './list';
+/* eslint-enable */
 
 const task = (() => {
   class Task {
@@ -26,7 +28,7 @@ const task = (() => {
     clearAllTasks();
     if (tasks !== '') {
       const value = Object.values(tasks);
-      for (let i = 0; i < value.length; i++) {
+      for (let i = 0; i < value.length; i += 1) {
         if (value !== undefined) {
           const todoBody = document.querySelector('.todo-body');
           const divTasks = document.createElement('div');
@@ -57,7 +59,6 @@ const task = (() => {
           trashTask.setAttribute('class', 'delete-tast');
           trashTask.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 
-
           labelTask.appendChild(spanTask);
           labelTask.appendChild(titleTask);
           labelTask.appendChild(descriptionTask);
@@ -66,13 +67,13 @@ const task = (() => {
           divTask.appendChild(checkboxTask);
           divTask.appendChild(labelTask);
           divTask.appendChild(trashTask);
-          divTasks.appendChild(divTask)
+          divTasks.appendChild(divTask);
           todoBody.appendChild(divTasks);
 
           const form = document.querySelector('.pop-up-form');
           form.style.display = 'none';
         }
-      };
+      }
     }
   };
 
@@ -100,7 +101,7 @@ const task = (() => {
         deleteTaskAlert.textContent = '';
         deleteTaskAlert.style.display = 'none';
       }, 3000);
-      
+
       task.parentElement.remove();
       localStorage.setItem(taskListkey, JSON.stringify(updatedStorageTasks));
     }));

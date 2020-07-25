@@ -1,4 +1,6 @@
+/* eslint-disable */
 import task from './task';
+/* eslint-enable */
 
 const lists = (() => {
   const lists = document.querySelector('.task-list');
@@ -26,8 +28,7 @@ const lists = (() => {
 
   const storedList = () => {
     const object = Object.keys(localStorage).reduce((obj, str) => {
-      if (str === 'loglevel:webpack-dev-server') {
-      } else {
+      if (str !== 'loglevel:webpack-dev-server') {
         obj[str] = JSON.parse([localStorage.getItem(str)]) || [];
       }
       return obj;
