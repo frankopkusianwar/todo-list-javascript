@@ -52,7 +52,7 @@ In this project, we have build a Todo List App. The project follows the lesson a
 ### Features
 
 - User can create multiple lists.
-- A User can create tasks for each list .
+- A User can create tasks for each list.
 - A user can mark tasks as completed.
 - A user can delete a List
 - A user can delete a task within a list 
