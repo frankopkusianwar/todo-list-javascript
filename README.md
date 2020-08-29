@@ -67,9 +67,9 @@ In this project, we have build a Todo List App. The project follows the lesson a
 ## Built With
 
 This project was built using these technologies.
-* HTML
-* CSS
-* JavaScript
+* HTML5
+* CSS3
+* JavaScript(ES-6)
 * Web-pack
 
 ### Install
